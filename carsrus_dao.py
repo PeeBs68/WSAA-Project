@@ -36,19 +36,19 @@ class carsiteDAO:
     
     def getAll(self):
         cursor = self.getCursor()
-        sql="select * from student"
+        sql="select * from cars"
         cursor.execute(sql)
         result = cursor.fetchall()
-        studentlist = []
+        carlist = []
         for row in result:
-            studentlist.append(self.convertToDict(row))
+            carlist.append(self.convertToDict(row))
 
         self.closeAll()
-        return studentlist
+        return carlist
 
     def findByID(self, id):
         cursor = self.getCursor()
-        sql="select * from student where id = %s"
+        sql="select * from cars where id = %s"
         values = (id,)
 
         cursor.execute(sql, values)
@@ -56,33 +56,33 @@ class carsiteDAO:
         self.closeAll()
         return self.convertToDict(result)
     
-    def create(self, student):
+    def create(self, cars):
         cursor = self.getCursor()
-        sql="insert into student (name, age) values (%s,%s)"
-        values = (student.get("name"), student.get("age"))
+        sql="insert into cars (make, model, price) values (%s,%s,%s)"
+        values = (cars.get("make"), cars.get("model"), cars.get("price"))
         cursor.execute(sql, values )
 
         self.connection.commit()
         newid = cursor.lastrowid
-        student["id"] = newid
+        cars["id"] = newid
         self.closeAll()
-        return student
+        return cars
 
 
-    def update(self, id,  student):
+    def update(self, id,  cars):
         cursor = self.getCursor()
-        sql="update student set name= %s, age=%s  where id = %s"
+        sql="update cars set make = %s, model = %s, price = %s where id = %s"
     
-        values = (student.get("name"), student.get("age"), id)
+        values = (cars.get("make"), cars.get("model"), cars.get("price"), id)
         cursor.execute(sql, values)
         self.connection.commit()
         
         self.closeAll()
-        return student
+        return cars
 
     def delete(self, id):
         cursor = self.getCursor()
-        sql="delete from student where id = %s"
+        sql="delete from cars where id = %s"
         values = (id,)
 
         cursor.execute(sql, values)
@@ -94,13 +94,13 @@ class carsiteDAO:
 
 
     def convertToDict(self,resultLine):
-        studentKeys = ["id", "name", "age"]
+        car_Keys = ["id", "make", "model", "price"]
         currentkey = 0
-        student = {}
+        car = {}
         for attrib in resultLine:
-            student[studentKeys[currentkey]] = attrib
+            car[car_Keys[currentkey]] = attrib
             currentkey = currentkey + 1 
-        return student
+        return car
 
-studentDAO = StudentDAO()
+carsiteDAO = carsiteDAO()
     
