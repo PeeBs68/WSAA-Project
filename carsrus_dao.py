@@ -1,6 +1,9 @@
 # DAO
 # author: Phelim Barry
 
+# Note to self - look into getting outside data (see lecture 7.1 around the 20min mark)
+# Note to self - try and use multiple tables
+
 import mysql.connector
 from config import config as cfg
 class carsiteDAO:
@@ -13,7 +16,6 @@ class carsiteDAO:
     cursor =""
 
     def __init__(self): 
-        #these should be read from a config file
         self.host=cfg["host"]
         self.user=cfg["user"]
         self.password=cfg["password"]
@@ -50,7 +52,6 @@ class carsiteDAO:
         cursor = self.getCursor()
         sql="select * from cars where id = %s"
         values = (id,)
-
         cursor.execute(sql, values)
         result = cursor.fetchone()
         self.closeAll()
@@ -61,7 +62,6 @@ class carsiteDAO:
         sql="insert into cars (make, model, price) values (%s,%s,%s)"
         values = (cars.get("make"), cars.get("model"), cars.get("price"))
         cursor.execute(sql, values )
-
         self.connection.commit()
         newid = cursor.lastrowid
         cars["id"] = newid
@@ -72,11 +72,9 @@ class carsiteDAO:
     def update(self, id,  cars):
         cursor = self.getCursor()
         sql="update cars set make = %s, model = %s, price = %s where id = %s"
-    
         values = (cars.get("make"), cars.get("model"), cars.get("price"), id)
         cursor.execute(sql, values)
         self.connection.commit()
-        
         self.closeAll()
         return cars
 
@@ -84,9 +82,7 @@ class carsiteDAO:
         cursor = self.getCursor()
         sql="delete from cars where id = %s"
         values = (id,)
-
         cursor.execute(sql, values)
-
         self.connection.commit()
         self.closeAll
         print("delete done")
