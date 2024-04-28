@@ -9,25 +9,23 @@
 
     </head>
     <body>
-
         <h1>Cars R Us</h1>
         <div>
-            <button id="button-showCreate" onclick="showCreate()">create button</button></div>
+            <button id="button-showCreate" onclick="showCreate()">Add Car</button></div>
         <div>
             <table class="table" id="carTable">
                 <tr>
-                    <th>id</th>
-                    <th>make</th>
-                    <th>model</th>
-                    <th>price</th>
-                    <th>Update</th>
-                    <th>Delete</th>
+                    <th>ID</th>
+                    <th>Make</th>
+                    <th>Model</th>
+                    <th>Price</th>
+
                 </tr>
 
             </table>
         </div>
         <div id='createUpdateForm' style="display: none">
-                <h2><span id="createLabel">Create a</span> <span id="updateLabel">update</span> Car</h2>
+                <h2><span id="createLabel">Create a</span> <span id="updateLabel">Update</span> Car</h2>
                 <input type="hidden" name="id"/>
                 Make <input type="text" name="make" /><br/>
                 Model <input type="text" name="model"/> <br/>
@@ -124,7 +122,7 @@
         var cell5 = rowElement.insertCell(4);
         cell5.innerHTML = '<button onclick="showUpdate(this)">Update</button>'
         var cell6 = rowElement.insertCell(5);
-        cell6.innerHTML = '<button onclick=doDelete(this)>delete</button>'
+        cell6.innerHTML = '<button onclick=doDelete(this)>Delete</button>'
     }
 
     function getCarFromRow(rowElement){
