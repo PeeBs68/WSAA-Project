@@ -59,7 +59,6 @@ def update(id):
         car["model"] = jsonstring["model"]
     if "price" in jsonstring:
         car["price"] = jsonstring["price"]
-
     return(jsonify(carsiteDAO.update(id, car)))
 
 

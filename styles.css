@@ -1,0 +1,29 @@
+h1 {
+    text-align: center;
+}
+
+#createUpdateForm {
+    display: none;
+}
+
+#carTable {
+    width: 100%;
+}
+
+#carTable, th {
+    border: 1px solid black
+}
+
+#button-div {
+    padding-top: 10px;
+}
+
+#button-showCreate:hover, #doCreateButton:hover {
+    background-color: #303030;
+    color: white;
+}
+
+#button-doUpdate:hover, #doupdateButton:hover {
+    background-color: #303030;
+    color: white;
+}
