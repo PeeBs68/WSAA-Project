@@ -27,3 +27,22 @@ h1 {
     background-color: #303030;
     color: white;
 }
+
+table {
+    background-color: lightblue;
+  }
+
+body {
+    background-color: lightsalmon;
+  }
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: lightblue;
+    color: black;
+    text-align: left;
+  }
+
