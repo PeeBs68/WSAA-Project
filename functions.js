@@ -31,6 +31,9 @@ function doCreate(){
     car.make = form.querySelector("input[name = 'make']").value
     car.model = form.querySelector('input[name = "model"]').value
     car.price = form.querySelector('input[name = "price"]').value
+    car.colour = form.querySelector('input[name = "colour"]').value
+    car.kilometers = form.querySelector('input[name = "kilometers"]').value
+    car.fun_factor = form.querySelector('input[name = "fun_factor"]').value
     console.log(JSON.stringify(car))
     createCarAjax(car)
 }
@@ -50,6 +53,9 @@ function clearForm(){
     form.querySelector("input[name='make']").value=''
     form.querySelector("input[name='model']").value=''
     form.querySelector("input[name='price']").value=''
+    form.querySelector("input[name='colour']").value=''
+    form.querySelector("input[name='kilometers']").value=''
+    form.querySelector("input[name='fun_factor']").value=''
 }
 
 function getCarFromForm(){
@@ -59,6 +65,9 @@ function getCarFromForm(){
     car.make = form.querySelector("input[name='make']").value
     car.model = form.querySelector("input[name='model']").value
     car.price = parseInt(form.querySelector("input[name='price']").value,10)
+    car.colour = form.querySelector("input[name='colour']").value
+    car.kilometers = parseInt(form.querySelector("input[name='kilometers']").value,10)
+    car.fun_factor = parseInt(form.querySelector("input[name='fun_factor']").value,10)
     console.log(JSON.stringify(car))
 
     return car
@@ -82,10 +91,22 @@ function addCarToTable(car){
     var cell4 = rowElement.insertCell(3)
     cell4.innerHTML = car.price
 
-    var cell5 = rowElement.insertCell(4);
-    cell5.innerHTML = '<button onclick="showUpdate(this)">Update</button>'
-    var cell6 = rowElement.insertCell(5);
-    cell6.innerHTML = '<button onclick=doDelete(this)>Delete</button>'
+    var cell5 = rowElement.insertCell(4)
+    cell5.innerHTML = car.colour
+
+    var cell6 = rowElement.insertCell(5)
+    cell6.innerHTML = car.kilometers
+
+    var cell7 = rowElement.insertCell(6)
+    cell7.innerHTML = car.fun_factor
+
+    var cell8 = rowElement.insertCell(7);
+    cell8.innerHTML = '<button onclick="showUpdate(this)">Update</button>'
+
+    var cell9 = rowElement.insertCell(8);
+    cell9.innerHTML = '<button onclick=doDelete(this)>Delete</button>'
+
+
 }
 
 function getCarFromRow(rowElement){
@@ -95,6 +116,9 @@ function getCarFromRow(rowElement){
     car.make = rowElement.cells[1].firstChild.textContent
     car.model = rowElement.cells[2].firstChild.textContent
     car.price = parseInt(rowElement.cells[3].firstChild.textContent,10)
+    car.colour = rowElement.cells[4].firstChild.textContent
+    car.kilometers = parseInt(rowElement.cells[5].firstChild.textContent,10)
+    car.fun_factor = parseInt(rowElement.cells[6].firstChild.textContent,10)
     return car
 
 }
@@ -104,6 +128,9 @@ function setCarInRow(rowElement,car){
     rowElement.cells[1].firstChild.textContent = car.make
     rowElement.cells[2].firstChild.textContent = car.model
     rowElement.cells[3].firstChild.textContent = car.price
+    rowElement.cells[4].firstChild.textContent = car.colour
+    rowElement.cells[5].firstChild.textContent = car.kilometers
+    rowElement.cells[6].firstChild.textContent = car.fun_factor
 
 }
 
@@ -114,6 +141,9 @@ function populateFormWithCar(car){
     form.querySelector("input[name='make']").value=car.make
     form.querySelector("input[name='model']").value=car.model
     form.querySelector("input[name='price']").value=car.price
+    form.querySelector("input[name='colour']").value=car.colour
+    form.querySelector("input[name='kilometers']").value=car.kilometers
+    form.querySelector("input[name='fun_factor']").value=car.fun_factor
     return car
 }
 
