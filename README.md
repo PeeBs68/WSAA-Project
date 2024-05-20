@@ -23,4 +23,4 @@ Modules installed/imported:
     jsonify, abort, Flask, request (flask)
 
 
-
+Note to Andrew - I was getting some server errors related to "quirks Mode" with my last update to pythonanywhere so I pulled the code and reverted back to the previous version. The local version works/looks a little different but I didn't want to risk pushing them to pythonanywhere again in case something broke and I didn't have time to fix it before the submission deadline.
